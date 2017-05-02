@@ -5,13 +5,26 @@
 </head>
 <body>
 
-	<div>
-		<h1>Hello Grader! Please upload your code to grade on TENANT ONE</h1>
-	</div>
+	<div class="container-fluid">
+		<h1>
+			<b>Hello Grader! Please upload your code to grade on TENANT ONE</b>
+		</h1>
 
+		<div ng-controller="myCtrl">
+			<input type="file" file-model="myFile"
+				accept="application/x-zip-compressed" /> <br />
+
+			<button ng-click="uploadFile()">upload zip</button>
+
+			<!--<img data-ng-src="data:image/png;base64,{{output}}"  width="250" height="250" > -->
+			<br /> <img ng-src="{{output}}" width="700" height="400">
+		</div>
+
+	</div>
+	<br />
 	<section class="features_table">
-		<div class="container ">
-			<div class="col-sm-8 col-8 col-xs-12 no-padding">
+		<div class="container-fluid">
+			<div class="col-sm-6 col-6 col-xs-12 no-padding">
 				<div class="features-table">
 					<ul>
 						<h1>Diagram Features</h1>
@@ -21,20 +34,18 @@
 				</div>
 			</div>
 
-			<div class="col-sm-2 col-2 col-xs-12 no-padding">
+			<div class="col-sm-3 col-3 col-xs-12 no-padding">
 				<div class="features-table-free">
 					<ul>
 						<h1>Grade</h1>
-
-
-						<li><i class="fa fa-check"> <select ng-model="correct">
-						<option disabled selected value>--select option--</option>
+						<li><i class="fa fa-check"><select ng-model="correct">
+									<option disabled selected value>--select option--</option>
 									<option value="yes">YES</option>
 									<option value="no">NO</option>
 									<option value="partial">Partial</option>
 							</select></i></li>
 						<li><i class="fa fa-check"> <select ng-model="mark">
-						<option disabled selected value>--select option--</option>
+									<option disabled selected value>--select option--</option>
 									<option value="0">0</option>
 									<option value="5">5</option>
 									<option value="10">10</option>

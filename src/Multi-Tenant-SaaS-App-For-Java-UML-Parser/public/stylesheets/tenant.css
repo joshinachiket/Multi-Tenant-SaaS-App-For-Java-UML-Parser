@@ -58,6 +58,7 @@ h1{
 }
 .features-table-free li {
     border-right: 2px solid #d4d4d4;
+    text-align: center;
 }
 
 .fa.fa-check {
