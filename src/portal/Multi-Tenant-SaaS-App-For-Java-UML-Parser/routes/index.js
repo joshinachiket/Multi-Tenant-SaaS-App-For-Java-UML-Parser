@@ -65,8 +65,10 @@ var enterTenantOneInfo = function(req, res) {
 	console.log(req.body);
 	
 	var TenantInsertQuery = "INSERT INTO tenant_one_info VALUES ('" + 
-						req.body.tenant_name + "','" + req.body.correctness + 
-						"','" + req.body.marks + "')";
+						req.body.tenant_name + 
+						"','" + req.body.correctness + 
+						"','" + req.body.marks + 
+						"','" + req.body.comment +"')";
 
 	console.log("QUERY to enter tenant details is: " + TenantInsertQuery);
 

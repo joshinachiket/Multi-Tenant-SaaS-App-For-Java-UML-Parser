@@ -7,7 +7,7 @@
 
 	<div class="container-fluid">
 		<h1>
-			<b>Hello Grader! Please upload your code to grade on TENANT TWO</b>
+			<b>Hello Grader! Please upload your code to grade on Tenant 2 Laura's UML Parser</b>
 		</h1>
 
 		<div ng-controller="myCtrl">
@@ -29,7 +29,7 @@
 					<ul>
 						<h1>Diagram Features</h1>
 						<li>Correct? (Yes/No)</li>
-						<li>Marks (0/5/10)</li>
+						<li>GRADE (A/B/C/D)</li>
 					</ul>
 				</div>
 			</div>
@@ -46,9 +46,10 @@
 							</select></i></li>
 						<li><i class="fa fa-check"> <select ng-model="mark">
 									<option disabled selected value>--select option--</option>
-									<option value="0">0</option>
-									<option value="5">5</option>
-									<option value="10">10</option>
+									<option value="A">A</option>
+									<option value="B">B</option>
+									<option value="C">C</option>
+									<option value="D">D</option>
 							</select></i></</li>
 						<li><input class="btn btn-lg btn-success btn-block"
 							type="submit" id="enter" value="ENTER" ng-click="enter();"></li>

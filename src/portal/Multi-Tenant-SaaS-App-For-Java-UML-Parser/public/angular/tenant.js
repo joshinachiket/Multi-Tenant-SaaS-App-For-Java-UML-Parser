@@ -18,6 +18,9 @@ tenant.config(function($routeProvider) {
 	}).when("/tenant3", {
 		templateUrl : "/templates/tenant3.html",
 		controller : "tenant3_controller"
+	}).when("/tenant4", {
+		templateUrl : "/templates/tenant4.html",
+		controller : "tenant4_controller"
 	});
 
 });
@@ -85,16 +88,17 @@ tenant.controller('myCtrl', [ '$scope', 'fileUpload',
 		} ]);
 
 tenant.controller("tenant1_controller", function($scope, $http) {
-	console.log("inside tenant1 controller");
+	console.log("inside Tenant-1 Akshay controller");
 	$scope.mark_flag = true;
 
 	$scope.enter = function() {
-		console.log("enter button tenent 1 pressed!");
+		console.log("enter button Tenant-1 Akshay pressed!");
 		
 		var TenantOneDetails = {
-				"tenant_name" : "Tenant One",
+				"tenant_name" : "Tenant-1 Akshay",
 				"correctness" : $scope.correct,
-				"marks" : $scope.mark
+				"marks" : $scope.mark,
+				"comment" : ""
 		};
 
 		if (!($scope.correct) || !($scope.mark)) {
@@ -125,35 +129,122 @@ tenant.controller("tenant1_controller", function($scope, $http) {
 });
 
 tenant.controller("tenant2_controller", function($scope, $http) {
-	console.log("inside tenant1 controller");
+	console.log("inside Tenant-2 Laura controller");
 	$scope.mark_flag = true;
-
+	
 	$scope.enter = function() {
-		console.log("enter button tenent 2 pressed!");
+		console.log("enter button Tenant-2 Laura pressed!");
+		
+		var TenantOneDetails = {
+				"tenant_name" : "Tenant-2 Laura",
+				"correctness" : $scope.correct,
+				"marks" : $scope.mark,
+				"comment" : ""
+		};
 
 		if (!($scope.correct) || !($scope.mark)) {
 			$scope.mark_flag = false;
 			console.log("cant enter empty credentials");
 		} else {
 			$scope.mark_flag = true;
-			console.log("Correct: " + $scope.correct + " Marks: " + $scope.mark);
+
+			console.log(TenantOneDetails);
+			
+			$http({
+				method : "POST",
+				url : '/enterTenantOneInfo',
+				data : JSON.stringify(TenantOneDetails),
+				headers: {'Content-Type': 'application/json'}
+			}).success(function(data) {
+
+				if (data.statusCode === 200) {
+					console.log("invalid entry received");
+				} else {
+					console.log("record has been inserted");
+				}
+			});
+			
 		}
 	};
 });
 
 tenant.controller("tenant3_controller", function($scope, $http) {
-	console.log("inside tenant1 controller");
+	console.log("inside Tenant-3 Suchi controller");
 	$scope.mark_flag = true;
 
 	$scope.enter = function() {
-		console.log("enter button tenent 3 pressed!");
+		console.log("enter button Tenant-3 Suchi pressed!");
+		
+		var TenantOneDetails = {
+				"tenant_name" : "Tenant-3 Suchi",
+				"correctness" : $scope.correct,
+				"marks" : $scope.mark,
+				"comment" : ""
+		};
 
 		if (!($scope.correct) || !($scope.mark)) {
 			$scope.mark_flag = false;
 			console.log("cant enter empty credentials");
 		} else {
 			$scope.mark_flag = true;
-			console.log("Correct: " + $scope.correct + " Marks: " + $scope.mark);
+
+			console.log(TenantOneDetails);
+			
+			$http({
+				method : "POST",
+				url : '/enterTenantOneInfo',
+				data : JSON.stringify(TenantOneDetails),
+				headers: {'Content-Type': 'application/json'}
+			}).success(function(data) {
+
+				if (data.statusCode === 200) {
+					console.log("invalid entry received");
+				} else {
+					console.log("record has been inserted");
+				}
+			});
+			
+		}
+	};
+});
+
+
+tenant.controller("tenant4_controller", function($scope, $http) {
+	console.log("inside Tenant-4 Apoorva controller");
+	$scope.mark_flag = true;
+
+	$scope.enter = function() {
+		console.log("enter button Tenant-4 Apoorva pressed!");
+		
+		var TenantOneDetails = {
+				"tenant_name" : "Tenant-4 Apoorva",
+				"correctness" : $scope.correct,
+				"marks" : $scope.mark,
+				"comment" : $scope.comment
+		};
+
+		if (!($scope.correct) || !($scope.mark)) {
+			$scope.mark_flag = false;
+			console.log("cant enter empty credentials");
+		} else {
+			$scope.mark_flag = true;
+
+			console.log(TenantOneDetails);
+			
+			$http({
+				method : "POST",
+				url : '/enterTenantOneInfo',
+				data : JSON.stringify(TenantOneDetails),
+				headers: {'Content-Type': 'application/json'}
+			}).success(function(data) {
+
+				if (data.statusCode === 200) {
+					console.log("invalid entry received");
+				} else {
+					console.log("record has been inserted");
+				}
+			});
+			
 		}
 	};
 });
