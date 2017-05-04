@@ -49,7 +49,9 @@ myApp.controller('myCtrl', ['$scope', 'fileUpload', function($scope, fileUpload)
     
     $scope.uploadFile = function(){
         var file = $scope.myFile;
-        var uploadUrl = "/";
+        //while uploading on EC2 use second POST URL
+        //var uploadUrl = "/";
+        var uploadUrl = "/apoorva";
         fileUpload.uploadFileToUrl(file, uploadUrl, function(data) {
         	console.log(data.path);
         	$scope.output = data.path;

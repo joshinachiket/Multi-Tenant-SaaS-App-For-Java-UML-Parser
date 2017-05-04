@@ -23,8 +23,11 @@ app.use(function(req, res, next) {
 	  next();    
 });
 
-app.get('/', index.upload_get);
-app.post('/', index.upload_post);
+app.get('/', index.get_homepage);
+app.get('/suchi', index.get_homepage);
+
+app.post('/', index.upload);
+app.post('/suchi', index.upload);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

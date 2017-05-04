@@ -1,5 +1,5 @@
 /*
- * GET home page.
+ * GET home page Tenant - Apoorva.
  */
 
 var formidable = require('formidable');
@@ -8,18 +8,18 @@ var unzip = require('unzip');
 var exec = require('child_process').exec;
 var errors = require('errors');
 
-var upload_get = function (req, res) {
+var get_homepage = function (req, res) {
 	res.render('index');
 };
 
-var upload_post = function (req, res) {
+var upload = function (req, res) {
 	
-	console.log("control caught in upload_post HTTP request");
+	console.log("control caught in upload HTTP POST request");
 	
-	 var form = new formidable.IncomingForm();
+	 var form_incoming = new formidable.IncomingForm();
 
-	    form.parse(req);
-	    form.on('fileBegin', function (name, file){
+	    form_incoming.parse(req);
+	    form_incoming.on('fileBegin', function (name, file){
 	    	var dir = './public/uploads/';
 	        if (!fs.existsSync(dir)){
 	        	fs.mkdirSync(dir);
@@ -27,7 +27,7 @@ var upload_post = function (req, res) {
 	        file.path = dir + file.name;
 	    });
 
-	    form.on('file', function (name, file){
+	    form_incoming.on('file', function (name, file){
 	    	// Unzip the file
 	    	fs.createReadStream(file.path)
 	    		.pipe(unzip.Extract({ path: './public/uploads/' }))
@@ -40,7 +40,6 @@ var upload_post = function (req, res) {
 		    			var extractedFilePath = file.path.substring(1,file.path.lastIndexOf('.'));
 		    			var outputFile = 'output';
 		    			
-		    			//exec('java -jar ./public/uml_parser/UmlParser.jar '+'.'+extractedFilePath+' '+outputFile,
 		    			exec('java -jar ./public/uml_parser/UmlParser.jar class .'+extractedFilePath+' output',		
 		    			        function (error, stdout, stderr){
 		    				    if(error !== null){
@@ -58,4 +57,4 @@ var upload_post = function (req, res) {
 	    });
 };
 
-module.exports = { upload_get, upload_post}
+module.exports = { get_homepage, upload}

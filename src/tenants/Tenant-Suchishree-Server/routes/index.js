@@ -8,18 +8,18 @@ var unzip = require('unzip');
 var exec = require('child_process').exec;
 var errors = require('errors');
 
-var upload_get = function (req, res) {
+var get_homepage = function (req, res) {
 	res.render('index');
 };
 
-var upload_post = function (req, res) {
+var upload = function (req, res) {
 	
-	console.log("control caught in upload_post HTTP request");
+	console.log("control caught in upload HTTP POST request");
 	
-	 var form = new formidable.IncomingForm();
+	 var form_incoming = new formidable.IncomingForm();
 
-	    form.parse(req);
-	    form.on('fileBegin', function (name, file){
+	    form_incoming.parse(req);
+	    form_incoming.on('fileBegin', function (name, file){
 	    	var dir = './public/uploads/';
 	        if (!fs.existsSync(dir)){
 	        	fs.mkdirSync(dir);
@@ -27,7 +27,7 @@ var upload_post = function (req, res) {
 	        file.path = dir + file.name;
 	    });
 
-	    form.on('file', function (name, file){
+	    form_incoming.on('file', function (name, file){
 	    	// Unzip the file
 	    	fs.createReadStream(file.path)
 	    		.pipe(unzip.Extract({ path: './public/uploads/' }))
@@ -47,7 +47,7 @@ var upload_post = function (req, res) {
 		    				    	console.log("Error -> "+error);
 		    				    	res.send({'path':'./public/images/server_error.png'});
 		    				    } else {
-		    				    	console.log("Uml Diagram Generate");
+		    				    	console.log("Uml Diagram has been Generate");
 		    				    	var outputFilePath = '.'+extractedFilePath+'/'+outputFile+'.png';
 		    				    	console.log(outputFilePath);
 		    				    	res.send({'path':outputFilePath});
@@ -58,4 +58,4 @@ var upload_post = function (req, res) {
 	    });
 };
 
-module.exports = { upload_get, upload_post}
+module.exports = { get_homepage, upload}
