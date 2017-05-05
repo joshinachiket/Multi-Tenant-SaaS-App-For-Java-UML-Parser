@@ -86,8 +86,14 @@ tenant.controller('myCtrl', [ '$scope', 'fileUpload',
 				console.log(uploadUrl);
 
 				fileUpload.uploadFileToUrl(file, uploadUrl, function(data) {
-					console.log(data.path);
-					$scope.output = data.path;
+					console.log("my image path is:");
+					
+					var image_link = data.path;
+					image_link = image_link.substring(1);
+					image_link = link + image_link;
+					
+					console.log(image_link);
+					$scope.output = image_link;
 				});
 
 			};
