@@ -90,7 +90,7 @@ tenant.controller('myCtrl', [ '$scope', 'fileUpload',
 					
 					var image_link = data.path;
 					image_link = image_link.substring(1);
-					image_link = link + image_link;
+					image_link = link + "/" + tenant + image_link;
 					
 					console.log(image_link);
 					$scope.output = image_link;
