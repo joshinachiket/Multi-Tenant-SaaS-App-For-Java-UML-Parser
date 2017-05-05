@@ -17,6 +17,9 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/public', express.static('public'))
+app.all('*',index.all);
+app.options('*',index.options);
+
 
 app.use(function(req, res, next) {
 	  req.headers['if-none-match'] = 'no-match-for-this';

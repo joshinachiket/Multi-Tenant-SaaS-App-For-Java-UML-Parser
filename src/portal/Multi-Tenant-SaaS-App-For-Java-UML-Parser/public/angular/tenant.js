@@ -3,6 +3,11 @@
  */
 var tenant = angular.module('tenant', [ 'ngRoute' ]);
 
+var link = "http://CMPE281-SAAS-APP-LB-1609984865.us-west-2.elb.amazonaws.com:3000";
+
+
+
+
 tenant.controller("tenant", function($scope, $http) {
 	console.log("inside tenant controller");
 });
@@ -63,7 +68,7 @@ tenant.service('fileUpload', [ '$http', function($http) {
 			cb(data);
 		}).error(function(err) {
 
-			console.log("control caught in failure callback");
+			console.log("control caught in failure callback nachiket");
 			console.log(err);
 			cb(err);
 		});
@@ -73,11 +78,12 @@ tenant.service('fileUpload', [ '$http', function($http) {
 tenant.controller('myCtrl', [ '$scope', 'fileUpload',
 		function($scope, fileUpload) {
 
-			$scope.uploadFile = function() {
-				console.log("control caught in myCtrl controller");
-
+			$scope.uploadFile = function(tenant) {
+			
 				var file = $scope.myFile;
-				var uploadUrl = "/";
+				var uploadUrl = link + "/" + tenant;
+				console.log("control caught in myCtrl controller new nachiket with URL");
+				console.log(uploadUrl);
 
 				fileUpload.uploadFileToUrl(file, uploadUrl, function(data) {
 					console.log(data.path);
@@ -95,6 +101,7 @@ tenant.controller("tenant1_controller", function($scope, $http) {
 		console.log("enter button Tenant-1 Akshay pressed!");
 		
 		var TenantOneDetails = {
+				"tenant_id" : "101",
 				"tenant_name" : "Tenant-1 Akshay",
 				"correctness" : $scope.correct,
 				"marks" : $scope.mark,
@@ -136,6 +143,7 @@ tenant.controller("tenant2_controller", function($scope, $http) {
 		console.log("enter button Tenant-2 Laura pressed!");
 		
 		var TenantOneDetails = {
+				"tenant_id" : "102",
 				"tenant_name" : "Tenant-2 Laura",
 				"correctness" : $scope.correct,
 				"marks" : $scope.mark,
@@ -176,6 +184,7 @@ tenant.controller("tenant3_controller", function($scope, $http) {
 		console.log("enter button Tenant-3 Suchi pressed!");
 		
 		var TenantOneDetails = {
+				"tenant_id" : "103",
 				"tenant_name" : "Tenant-3 Suchi",
 				"correctness" : $scope.correct,
 				"marks" : $scope.mark,
@@ -217,6 +226,7 @@ tenant.controller("tenant4_controller", function($scope, $http) {
 		console.log("enter button Tenant-4 Apoorva pressed!");
 		
 		var TenantOneDetails = {
+				"tenant_id" : "104",
 				"tenant_name" : "Tenant-4 Apoorva",
 				"correctness" : $scope.correct,
 				"marks" : $scope.mark,

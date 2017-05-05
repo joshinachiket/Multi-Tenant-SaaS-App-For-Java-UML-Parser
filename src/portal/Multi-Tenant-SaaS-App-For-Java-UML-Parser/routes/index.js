@@ -10,6 +10,26 @@ var errors = require('errors');
 var ejs = require("ejs");
 var mysql = require('./mysql');
 
+
+//following function takes care of cross origin requests. this is because chrome blocks
+//requests made to servers of other origins
+var all = function(req, res, next) {
+  // add details of what is allowed in HTTP request headers to the response headers
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Credentials', false);
+  res.header('Access-Control-Max-Age', '86400');
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+  // the next() function continues execution and will move onto the requested URL/URI
+  next();
+};
+
+
+var options = function(req, res) {
+  res.sendStatus(200);
+};
+
+
 var upload_get = function (req, res) {
 	res.render('index');
 };
@@ -64,8 +84,8 @@ var enterTenantOneInfo = function(req, res) {
 
 	console.log(req.body);
 	
-	var TenantInsertQuery = "INSERT INTO tenant_one_info VALUES ('" + 
-						req.body.tenant_name + 
+	var TenantInsertQuery = "INSERT INTO tenant_specific_data (tenant_id, correct, marks, comment) VALUES ('" + 
+						req.body.tenant_id + 
 						"','" + req.body.correctness + 
 						"','" + req.body.marks + 
 						"','" + req.body.comment +"')";
@@ -98,4 +118,4 @@ var enterTenantOneInfo = function(req, res) {
 	}, TenantInsertQuery);
 };
 
-module.exports = { upload_get, enterTenantOneInfo, upload_post}
+module.exports = { upload_get, enterTenantOneInfo, upload_post, all, options}

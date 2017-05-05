@@ -17,6 +17,8 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/templates/public', express.static('public'))
+app.all('*',index.all);
+app.options('*',index.options);
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
