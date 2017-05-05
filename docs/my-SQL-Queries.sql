@@ -20,8 +20,7 @@ select * from tenant_common_data;
 select * from tenant_specific_data;
 
 
-DROP table tenant_common_data;
-DROP table tenant_specific_data;
+
 
 INSERT INTO tenant_common_data (tenant_id, tenant_name)  
 VALUES (101, "Tenant-1 Akshay");
@@ -36,8 +35,12 @@ INSERT INTO tenant_common_data (tenant_id, tenant_name)
 VALUES (104, "Tenant-4 Apoorva");
 
 INSERT INTO tenant_specific_data (grade_id, tenant_id, correct, marks, comment)  
-VALUES (100000, "101", "YES", 10, "Awesome work");
+VALUES ("100000","101", "YES", 10, "initial entry");
 
 
 ALTER TABLE tenant_specific_data
 DROP grade;
+
+
+DROP table tenant_common_data;
+DROP table tenant_specific_data;
