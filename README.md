@@ -27,7 +27,9 @@ In this project, the requirement was to create a Multi-Tenant, Cloud Scaled, Mul
 I have used : node.JS, Angular.JS, HTML, JavaScript, AWS Load Balancer, EC2 continer Service, Botkit, Git
 
 ## Demo and Directions Video 
+<a href="https://youtu.be/HT-302iL6cI"><img src="https://github.com/joshinachiket/Multi-Tenant-SaaS-App-For-Java-UML-Parser/blob/master/docs/screenshots/Thumbnail/thumbnail.png" 
+alt="Demo and Directions Video" width="240" height="180" border="10" /></a>
 
 ## CONCLUSION
--Learned AWS manipulations, load balancer, gateway API configurations, EC2 container services, CORS concept, Image handling over cloud
--This Project is focused on Design and Use of AWS for Cloud Scale Deployment.
+- Learned AWS manipulations, load balancer, gateway API configurations, EC2 container services, CORS concept, Image handling over cloud
+- This Project is focused on Design and Use of AWS for Cloud Scale Deployment.
